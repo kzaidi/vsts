@@ -22,4 +22,4 @@ workflows:
   scan-image:
     jobs:
       - build-and-scan:
-          context: microscanner
+          context: Aqua
