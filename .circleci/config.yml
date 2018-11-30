@@ -1,13 +1,25 @@
-version: 2
+# CircleCI build config example for testing implementing the 
+# Aqua Security MicroScanner
+
+version: 2.1
+
+orbs:
+  microscanner: aquasecurity/microscanner@dev:0.1.5
+
+
 jobs:
-  build:
-    docker:
-      - image: debian:stretch
+  build-and-scan:
+    executor: microscanner/default
     steps:
       - checkout
-      - run:
-          name: Greeting
-          command: echo Hello, world.
-      - run:
-          name: Print the Current Time
-          command: date
+      - run: docker build -t build/test:latest .
+      - microscanner/install
+      - microscanner/scan:
+          image: build/test:latest
+          microscanner_options: "--continue-on-failure"
+
+workflows:
+  scan-image:
+    jobs:
+      - build-and-scan:
+          context: microscanner
