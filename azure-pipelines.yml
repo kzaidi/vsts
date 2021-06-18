@@ -7,6 +7,16 @@
     hideBase: false
     showNegligible: false
     windowsScannerVersion: '4.2.0'
+    registry: 'docker hub'
+    connection: 'AquaConnection'
+- task: aquasecScanner@4
+  inputs:
+    image: 'centos:latest'
+    scanType: 'local'
+    register: false
+    hideBase: false
+    showNegligible: false
+    windowsScannerVersion: '4.2.0'
     registry: 'Docker Hub'
     connection: 'Aqua Demo Console'
 # Build a Docker image
