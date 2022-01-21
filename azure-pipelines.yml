@@ -17,15 +17,15 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-    - task: aquasecScanner@4
-      inputs:
-        image: 'centos:latest'
-        scanType: 'hosted'
-        register: false
-        hideBase: false
-        showNegligible: false
-        windowsScannerVersion: '4.2.0'
-        scanner: 'registry.aquasec.com/scanner:6.5'
-        runOptions: '-e AQUA_TOKEN=61ce5875ccd5e024bf51b1c9a4cf3534522f3d9b-KZ'
-        registry: 'Docker'
-        connection: 'AquaScannerSaaS'
+- task: aquasecScanner@4
+  inputs:
+    image: 'centos:latest'
+    scanType: 'hosted'
+    register: false
+    hideBase: false
+    showNegligible: false
+    windowsScannerVersion: '4.2.0'
+    scanner: 'registry.aquasec.com/scanner:6.5'
+    runOptions: '-e AQUA_TOKEN=61ce5875ccd5e024bf51b1c9a4cf3534522f3d9b'
+    registry: 'Docker'
+    connection: 'AquaScannerSaaS'
